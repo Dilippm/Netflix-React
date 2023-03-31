@@ -2,9 +2,11 @@ import React from 'react'
 import "./navbar.css";
 
 function Navbar() {
+
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   return (
     <div className='navbar'>
       <img
@@ -17,7 +19,7 @@ function Navbar() {
             <a href="/home" onClick={handleHomeClick}>Home</a>
           </li>
           <li>
-          <a href="#" >Originals</a>
+            <a href="#">Originals</a>
 
           </li>
           <li>
@@ -31,11 +33,10 @@ function Navbar() {
           </li>
         </ul>
         <div className="search">
-        <input type="text" placeholder="Search" />
-        <span className="material-icons">search</span>
+          <input type="text" placeholder="Search" />
+
+        </div>
       </div>
-      </div>
-      
 
       <img
         className='avatar'
