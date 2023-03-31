@@ -9,6 +9,7 @@
     padding: 20px;
     overflow-x: scroll;
     overflow-y: hidden;
+    scroll-behavior: smooth;
 
 }
 
@@ -37,3 +38,4 @@
 .smallPoster:hover {
     transform: scale(1.3)
 }
+

@@ -5,18 +5,39 @@ import './RowPost.css';
 import axios from '../../constants/axios';
 
 function RowPost(props) {
-  const [movies,setMovies] = useState([]);
-  const [urlId,setUrlId]=useState(null);
+  const [movies, setMovies] = useState([]);
+  const [urlId, setUrlId] = useState(null);
+  // const [scrollInterval, setScrollInterval] = useState(null);
 
-  useEffect(()=>{
-    axios.get(props.url).then((res)=>{
-     
+  useEffect(() => {
+    axios.get(props.url).then((res) => {
       setMovies(res.data.results)
-    }).catch(err=>{
+    }).catch(err => {
       // alert('network error')
     })
 
-  },[props.url]);
+  }, [props.url]);
+
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      const postersList = document.querySelectorAll('.posters');
+      postersList.forEach((posters) => {
+        posters.scrollLeft += 1; // adjust the scroll amount as needed
+      });
+  
+      const smallPostersList = document.querySelectorAll('.smallPoster');
+      smallPostersList.forEach((smallPosters) => {
+        smallPosters.scrollLeft += 1; // adjust the scroll amount as needed
+      });
+    }, 100);
+   
+    return () => {
+      clearInterval(scrollInterval);
+    };
+  }, [movies]);
+  
+  
+  
 
   const opts = {
     height: '390',
@@ -28,8 +49,8 @@ function RowPost(props) {
   };
 
   const handleMovie = (id) => {
-    axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(res=>{
-      if (res.data.results.length !==0) {
+    axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(res => {
+      if (res.data.results.length !== 0) {
         setUrlId(res.data.results[0].key);
       } else {
         console.log("no trailer for this movie in youtube");
@@ -40,9 +61,10 @@ function RowPost(props) {
   const handleClick = () => {
     setUrlId(null);
   }
+  
 
   return (
-    <div className='row' onClick={handleClick}> {/* click handler to hide Youtube when clicked */}
+    <div className='row' onClick={handleClick} >
       <h2>{props.title}</h2>
       <div className='posters'>
         {movies.map((obj) =>
@@ -50,15 +72,14 @@ function RowPost(props) {
             onClick={() => handleMovie(obj.id)}
             className={props.isSmall ? 'smallPoster' : 'poster'}
             src={`${imageUrl + obj.poster_path}`}
-            alt={obj.title} // Set alt text for accessibility
-            key={obj.id} // Set a unique key for each poster
+            alt={obj.title}
+            key={obj.id}
           />
         )}
       </div>
-      {urlId && <Youtube videoId={urlId} opts={opts} />} {/* Only show Youtube if urlId is true */}
+      {urlId && <Youtube videoId={urlId} opts={opts} />}
     </div>
   );
-  
 }
 
 

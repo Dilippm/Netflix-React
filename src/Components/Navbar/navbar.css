@@ -5,7 +5,7 @@
     height: 30px;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     background-color: #111;
 }
 .logo{
@@ -18,3 +18,61 @@
     right: 20px;
     width: 30px;
 }
+.container {
+    display: flex;
+    margin-left: 110px;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-list li {
+    margin-right: 20px;
+  }
+  
+  .nav-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-list li a:hover {
+    color: #f01010;
+    background-color: #000;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+  }
+  
+  .search input {
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: #f0ecec;
+    font-size: 16px;
+    width: 400px;
+  }
+  
+  .search .material-icons {
+    position: absolute;
+    right: 10px;
+    color: #f10f0f;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  
