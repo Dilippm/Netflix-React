@@ -3,9 +3,7 @@ import "./navbar.css";
 
 function Navbar() {
 
-  const handleHomeClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+ 
 
   return (
     <div className='navbar'>
@@ -16,7 +14,7 @@ function Navbar() {
       <div class="container">
         <ul class="nav-list">
           <li>
-            <a href="/home" onClick={handleHomeClick}>Home</a>
+            <a href="/home" >Home</a>
           </li>
           <li>
             <a href="#">Originals</a>
